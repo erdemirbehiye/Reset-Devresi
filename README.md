@@ -1,96 +1,78 @@
-# Reset Devresi
-Reset Devresi, butona basıldıktan belirli bir süre sonra, sistemi resetlemek amacıyla yapılmıştır. Bir mikrodenetleyicinin reset pinine uygulanan sinyal ‘0’ olunca programın çalışması başlangıç adresine döner. Sinyal ‘1’ olduğunda  program tekrar çalışır. Bu devre için direnç, diyot, kapasitör ve buton kullanılmıştır. Süre hesabı için kullanılan formül
- ’t = -log((V-Vc)/V)R*C’ dir. Bu formül referans alındığında direnç x oranında artarken kapasitörün değeri aynı x oranında azalırsa veya çıkış ve giriş voltaj değerleri aynı oranda değişirse resetleme süresi değiştirmeyecektir. 
+# The Reset Circuit
+The Reset Circuit resets the system after a certain time after the button is pressed. When the signal applied to the reset pin of a microcontroller is ‘0’, the execution of the program returns to the start address. The program runs again when the signal is ‘1’. The simple calculator that made by Adafruit [1], tell how many milliseconds are required to reach the specific output voltage, based on the supply voltage, the resistor value and the capacitor value. The formula used to calculate the delay is given in Equation 1.
 
-Örneğin; 
+t = -log[(V-Vout)/V]R*C  (Equation 1)
 
-Giriş voltajı(V): 10 V
-
-Çıkış voltajı(Vc): 8 V
-
-Direnç: 100 KOhm
-
-Kapasitör: 10 uF
+According to Equation 1, the reset time not change if the value of the capacitor decreases by a rate of 'x' while the value of resistor increases by the rate of 'x' and output voltage changes by the same rate of 'x'. For this situation, an example given in below.
 
 
-Süre:1609.4379 milisaniye
+The input voltage (V): 10 V
+
+The output voltage (Vout): 8 V
+
+The value of resistor: 100 KOhm
+
+The value of Capacitor: 10 uF
+
+
+Calculated Delay: 1609.4379 ms
 
 ————————————
 
-Giriş voltajı(V): 5 V
+The input voltage (V): 5 V
 
-Çıkış voltajı(Vc):  4 V
+The output voltage (Vout): 4 V
 
-Direnç: 10 KOhm
+The value of resistor: 100 KOhm
 
-Kapasitör: 100 uF
-
-
-Süre:1609.4379 milisaniye
+The value of Capacitor: 10 uF
 
 
-İki örnekte de resetleme süresi aynıdır.
+Calculated Delay: 1609.4379 ms
+
+
+The reset time is equal for both example.
 
 
 
-**UYGULAMA ÖRNEKLERİ:**
+Result of Application:
 
-Giriş voltajı(V): 1.8 V
 
-Çıkış voltajı(Vc):  1.52 V
+The input voltage (V): 1.8 V
 
-Direnç: 10 KOhm
+The output voltage (Vout): 1.52 V
 
-Kapasitör: 10 uF
+The value of resistor: 10 KOhm
 
-Ölçülen Süre: 1.97 saniye
+The value of Capacitor: 10 uF
 
-Formülden Hesaplanan Süre: 1.8 saniye
+Calculated Delay: 1.8 s
+Measured Delay: 1.97 s
 
 ——————————————————
 
-Giriş voltajı(V): 3.3 V
+The input voltage (V): 3.3 V
 
-Çıkış voltajı(Vc):  2.4 V
+The output voltage (Vout): 2.4 V
 
-Direnç: 10 KOhm
+The value of resistor: 10 KOhm
 
-Kapasitör: 10 uF
+The value of Capacitor: 100 uF
+
+Calculated Delay: 2.01 s
+Measured Delay: 2.1 s
+
+——————————————————
+
+The input voltage (V): 5 V
+
+The output voltage (Vout): 4.4 V
+
+The value of resistor: 10 KOhm
+
+The value of Capacitor: 100 uF
+
+Calculated Delay: 2.12 s
+Measured Delay: 1.9 s
 
 
-Ölçülen Süre: 2.1 saniye
-
-Formülden Hesaplanan Süre: 2.01 saniye
-
-
-———————————————————
-
-
-Giriş voltajı(V): 5.0 V
-
-Çıkış voltajı(Vc):  4.4 V
-
-Direnç: 10 KOhm
-
-Kapasitör: 10 uF
-
-
-Ölçülen Süre: 1.9 saniye
-
-Formülden Hesaplanan Süre: 2.12 saniye
-
-———————————————————
-
-Giriş voltajı(V): 5.0 V
-
-Çıkış voltajı(Vc):  4.4 V
-
-Direnç: 10 KOhm
-
-Kapasitör: 0.01 uF
-
-Ölçülen Süre: 300 milisaniye
-
-Formülden Hesaplanan Süre: 0.212 milisaniye
-
-—————————————————————
